@@ -27,6 +27,8 @@ import QuartzCore
 private var KVOContext = "RefresherKVOContext"
 private let ContentOffsetKeyPath = "contentOffset"
 
+//var autoNextNotName = ""
+
 public enum PullToRefreshViewState {
 
     case Loading

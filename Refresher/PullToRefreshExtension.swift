@@ -25,6 +25,8 @@ import Foundation
 import UIKit
 
 private let pullToRefreshTag = 324
+private let aotoToNextTag = 1875
+
 private let pullToRefreshDefaultHeight: CGFloat = 50
 
 extension UIScrollView {
@@ -34,6 +36,12 @@ extension UIScrollView {
         get {
             let pullToRefreshView = viewWithTag(pullToRefreshTag)
             return pullToRefreshView as? PullToRefreshView
+        }
+    }
+    public var autoToNextView: AutoToNextView? {
+        get {
+            let pullToRefreshView = viewWithTag(aotoToNextTag)
+            return pullToRefreshView as? AutoToNextView
         }
     }
     
@@ -58,6 +66,12 @@ extension UIScrollView {
         let pullToRefreshView = PullToRefreshView(action: action, frame: CGRectMake(0, -height, self.frame.size.width, height), animator: animator, subview: animator)
         pullToRefreshView.tag = pullToRefreshTag
         addSubview(pullToRefreshView)
+    }
+    
+    public func addAotuToNextWithAction(action:(() -> ())) {
+        let autoToNextView = AutoToNextView(frame: CGRectZero, action: action)
+        autoToNextView.tag = aotoToNextTag
+        addSubview(autoToNextView)
     }
     
     // Manually start pull to refresh
